@@ -1,0 +1,20 @@
+# Núcleo de notebooks
+jupyter
+ipykernel
+notebook
+
+# Manipulación de datos y visualización
+pandas
+numpy
+matplotlib
+
+# NLP clásico
+spacy
+nltk
+unidecode
+gensim
+scikit-learn
+
+# Modelos preentrenados / Transformers (Tema-03 Modelos generativos, Tema-04)
+transformers
+torch
