@@ -28,9 +28,47 @@ Cada tema incluye su propio directorio `data/` con los datasets que usan los not
 
 ## Instalación
 
+Elige **una** de las dos opciones para gestionar el entorno: Anaconda (recomendada si ya lo tienes instalado) o `venv` de Python estándar.
+
+### Opción 1 — Anaconda / Miniconda
+
+1. Instala [Anaconda](https://www.anaconda.com/download) o [Miniconda](https://docs.conda.io/en/latest/miniconda.html) si aún no lo tienes.
+
+2. Clona o abre el repositorio en VS Code y abre una terminal en la carpeta `02-Codigo`.
+
+3. Crea el entorno conda con Python 3.10 y actívalo:
+
+   ```bash
+   conda create -n nlp-vision python=3.10 -y
+   conda activate nlp-vision
+   ```
+
+4. Instala las dependencias con `pip` dentro del entorno conda:
+
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+   > Alternativa: si prefieres instalar todo desde el canal `conda-forge`, puedes usar
+   > `conda install -c conda-forge pandas numpy matplotlib scikit-learn spacy nltk gensim unidecode jupyter ipykernel transformers pytorch`.
+   > Sin embargo, `pip install -r requirements.txt` es más sencillo y reproduce exactamente las versiones del proyecto.
+
+5. Registra el entorno como kernel de Jupyter (para que aparezca en VS Code y en Jupyter):
+
+   ```bash
+   python -m ipykernel install --user --name nlp-vision --display-name "Python (nlp-vision)"
+   ```
+
+6. Descarga el modelo de spaCy en español y los recursos de NLTK (ver sección [Recursos adicionales](#recursos-adicionales)).
+
+Para salir del entorno cuando termines: `conda deactivate`.
+
+### Opción 2 — venv (Python estándar)
+
 1. Clona o abre el repositorio en VS Code.
 
-2. Crea y activa un entorno virtual (recomendado):
+2. Crea y activa un entorno virtual:
 
    **macOS / Linux**
    ```bash
@@ -51,19 +89,18 @@ Cada tema incluye su propio directorio `data/` con los datasets que usan los not
    pip install -r requirements.txt
    ```
 
-4. Descarga el modelo de spaCy en español (usado en casi todos los notebooks):
+4. Descarga el modelo de spaCy y los recursos de NLTK (ver sección siguiente).
 
-   ```bash
-   python -m spacy download es_core_news_md
-   ```
+### Recursos adicionales
 
-5. Descarga los recursos de NLTK que se utilizan (stopwords):
+Con el entorno (conda o venv) ya activado, ejecuta:
 
-   ```bash
-   python -m nltk.downloader stopwords
-   ```
+```bash
+python -m spacy download es_core_news_md
+python -m nltk.downloader stopwords
+```
 
-   > Los notebooks también ejecutan `nltk.download("stopwords")` automáticamente la primera vez.
+> Los notebooks también ejecutan `nltk.download("stopwords")` automáticamente la primera vez.
 
 ## Cómo ejecutar el código
 
@@ -72,7 +109,9 @@ Cada tema incluye su propio directorio `data/` con los datasets que usan los not
 1. Abre la carpeta `02-Codigo` en VS Code.
 2. Instala la extensión **Jupyter** si aún no la tienes.
 3. Abre cualquier `.ipynb` (por ejemplo `semana-01/Tema-01/EjemploTema1.ipynb`).
-4. En la esquina superior derecha del notebook, selecciona el kernel del entorno virtual `.venv` que creaste.
+4. En la esquina superior derecha del notebook, selecciona el kernel que corresponda:
+   - **Anaconda**: `Python (nlp-vision)` (el que registraste con `ipykernel install`).
+   - **venv**: el intérprete dentro de `.venv`.
 5. Ejecuta las celdas con `Shift + Enter`.
 
 ### Opción B — Jupyter en el navegador
@@ -91,6 +130,16 @@ El archivo `semana-01/Tema-02/nlp_doc2vec_word2vec_pipeline.py` se ejecuta direc
 cd semana-01/Tema-02
 python nlp_doc2vec_word2vec_pipeline.py
 ```
+
+### Opción D — Google Colab
+
+Cada notebook incluye al inicio un badge **Open in Colab** y una celda **Setup para Google Colab**. Para usarlo:
+
+1. Abre el notebook en GitHub y haz clic en el badge *Open in Colab* (o ve a https://colab.research.google.com → *GitHub* → pega la URL del notebook).
+2. Ejecuta la primera celda de código (*Setup para Google Colab*). Detecta el entorno automáticamente, instala las dependencias faltantes, descarga el modelo de spaCy y baja los archivos de `data/` desde el repositorio.
+3. Ejecuta el resto del notebook con normalidad.
+
+> En entornos locales (VS Code / Jupyter) esa misma celda no hace nada y se puede saltar.
 
 ## Notas
 
