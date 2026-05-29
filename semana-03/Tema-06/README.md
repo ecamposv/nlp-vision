@@ -20,7 +20,13 @@ Ambas versiones comparten el mismo enfoque pedagógico; cambia únicamente cómo
 Verifica Python:
 
 ```bash
+# macOS / Linux
 python3 --version
+```
+
+```powershell
+# Windows (PowerShell o CMD)
+py --version
 ```
 
 ## 2) Crear un environment nuevo de Python
@@ -53,11 +59,13 @@ python -m pip install --upgrade pip setuptools wheel
 
 Requiere tener instalado [Anaconda](https://www.anaconda.com/download) o [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
+> En **Windows** usa la app **Anaconda Prompt** (o **Anaconda PowerShell Prompt**) que se instala junto con Anaconda. En **macOS/Linux** sirve cualquier terminal.
+
 ```bash
 conda --version
 ```
 
-Crear y activar el environment (cambia el nombre según la versión):
+Crear y activar el environment (los comandos son iguales en macOS, Linux y Windows):
 
 ```bash
 # Versión base
@@ -132,7 +140,10 @@ curl -fsSL https://ollama.com/install.sh | sh
 #### Opción C: Descargar la app desde el sitio oficial (macOS y Windows)
 
 1. Ve a [https://ollama.com/download](https://ollama.com/download) y descarga el instalador para tu sistema operativo.
-2. En macOS: abre el `.dmg` y arrastra **Ollama** a la carpeta **Aplicaciones**.
+
+**En macOS:**
+
+2. Abre el `.dmg` y arrastra **Ollama** a la carpeta **Aplicaciones**.
 3. **Abre la app una vez** desde Launchpad o Aplicaciones. macOS pedirá permiso porque viene de internet → **Abrir**. Este primer arranque instala el comando `ollama` en tu PATH (`/usr/local/bin/ollama`) y deja el servicio corriendo en segundo plano (verás un ícono de llama en la barra de menú).
 4. **Cierra y reabre tu terminal** (o abre una pestaña nueva) para que el PATH se refresque.
 5. Verifica:
@@ -148,9 +159,23 @@ curl -fsSL https://ollama.com/install.sh | sh
    sudo ln -sf /Applications/Ollama.app/Contents/Resources/ollama /usr/local/bin/ollama
    ```
 
+**En Windows:**
+
+2. Ejecuta el instalador `OllamaSetup.exe` que descargaste y sigue los pasos (next → install).
+3. El instalador deja Ollama corriendo en segundo plano (verás el ícono de llama en la bandeja del sistema, junto al reloj) y agrega el comando `ollama` al PATH.
+4. **Cierra y reabre PowerShell o CMD** para que el PATH se refresque.
+5. Verifica:
+
+   ```powershell
+   where.exe ollama
+   ollama --version
+   ```
+
+   Si el comando no aparece, reinicia la sesión de Windows o verifica que `C:\Users\<TuUsuario>\AppData\Local\Programs\Ollama` esté en tu variable de entorno `PATH`.
+
 #### Levantar el servidor y descargar un modelo
 
-Con la app de macOS (Opción C), el servidor ya queda corriendo automáticamente en `http://localhost:11434`. Con las Opciones A o B necesitas levantarlo manualmente:
+Con la app oficial (Opción C en macOS o Windows), el servidor ya queda corriendo automáticamente en `http://localhost:11434`. Con las Opciones A o B necesitas levantarlo manualmente:
 
 ```bash
 ollama serve            # solo Opciones A y B; deja corriendo en http://localhost:11434
@@ -166,7 +191,16 @@ Verifica que responde:
 
 ```bash
 ollama run llama3.2 "Hola, preséntate brevemente en español."
+```
+
+```bash
+# macOS / Linux
 curl http://localhost:11434/api/tags
+```
+
+```powershell
+# Windows (PowerShell)
+Invoke-RestMethod http://localhost:11434/api/tags
 ```
 
 ### 5.2) Entrenar el bot
@@ -181,12 +215,12 @@ rasa train
 Necesitas que estén activos:
 
 1. **Ollama** (servidor del LLM en el puerto 11434).
-   - Si instalaste la app de macOS (Opción C), ya está corriendo automáticamente: verifica el ícono de llama en la barra de menú.
+   - Si instalaste la app oficial (Opción C, macOS o Windows), ya está corriendo automáticamente: verifica el ícono de llama en la barra de menú (macOS) o en la bandeja del sistema (Windows).
    - Si usaste Homebrew o el script (Opciones A/B), levántalo manualmente: `ollama serve`.
 2. **Servidor de acciones de Rasa** (puerto 5055).
 3. **Interfaz de chat** (`rasa shell`).
 
-Abre las terminales que necesites según tu caso:
+Abre las terminales que necesites según tu caso (los comandos `cd`, `rasa run actions` y `rasa shell` funcionan igual en macOS, Linux y Windows una vez que activaste el environment):
 
 ```bash
 # Solo Opciones A/B — Terminal de Ollama
@@ -211,8 +245,21 @@ Mensajes para probar el LLM:
 La acción lee variables de entorno (ver [02-chatbot-llm/actions/actions.py](02-chatbot-llm/actions/actions.py)):
 
 ```bash
+# macOS / Linux
 export OLLAMA_URL="http://localhost:11434/api/generate"
 export OLLAMA_MODEL="llama3.2"
+```
+
+```powershell
+# Windows (PowerShell)
+$env:OLLAMA_URL="http://localhost:11434/api/generate"
+$env:OLLAMA_MODEL="llama3.2"
+```
+
+```cmd
+rem Windows (CMD)
+set OLLAMA_URL=http://localhost:11434/api/generate
+set OLLAMA_MODEL=llama3.2
 ```
 
 ---
