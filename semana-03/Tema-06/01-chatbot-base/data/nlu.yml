@@ -1,0 +1,55 @@
+version: "3.1"
+
+nlu:
+  - intent: saludar
+    examples: |
+      - hola
+      - buenos días
+      - buenas tardes
+      - qué tal
+      - hola bot
+      - hey
+
+  - intent: despedir
+    examples: |
+      - adiós
+      - hasta luego
+      - nos vemos
+      - bye
+      - me voy
+
+  - intent: afirmar
+    examples: |
+      - sí
+      - claro
+      - correcto
+      - de acuerdo
+      - así es
+
+  - intent: negar
+    examples: |
+      - no
+      - para nada
+      - negativo
+      - no gracias
+
+  - intent: preguntar_curso
+    examples: |
+      - de qué trata este curso
+      - cuál es el objetivo de la materia
+      - qué estamos practicando
+      - para qué sirve este chatbot
+
+  - intent: preguntar_horario
+    examples: |
+      - cuál es el horario
+      - a qué hora practicamos
+      - cuándo puedo ejecutar el laboratorio
+      - cuándo se trabaja esta actividad
+
+  - intent: desafiar_bot
+    examples: |
+      - eres un bot
+      - eres humano
+      - estoy hablando con una máquina
+      - quién eres

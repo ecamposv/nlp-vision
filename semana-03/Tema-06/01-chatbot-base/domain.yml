@@ -1,0 +1,33 @@
+version: "3.1"
+
+intents:
+  - saludar
+  - despedir
+  - afirmar
+  - negar
+  - preguntar_curso
+  - preguntar_horario
+  - desafiar_bot
+
+responses:
+  utter_saludar:
+    - text: "Hola, soy tu chatbot de la semana 06. ¿En qué te puedo ayudar?"
+
+  utter_despedir:
+    - text: "¡Hasta luego! Mucho éxito con tu práctica de Rasa."
+
+  utter_soy_bot:
+    - text: "Soy un asistente virtual creado con Rasa Open Source."
+
+  utter_info_curso:
+    - text: "Este chatbot es un ejemplo para la materia de PLN y Visión Computacional."
+
+  utter_info_horario:
+    - text: "Puedes correr prácticas en el horario que defina tu clase o laboratorio."
+
+  utter_no_entendi:
+    - text: "No entendí tu mensaje. ¿Puedes reformularlo?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

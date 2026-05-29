@@ -1,0 +1,23 @@
+version: "3.1"
+
+stories:
+  - story: prueba saludo
+    steps:
+      - user: |
+          hola
+        intent: saludar
+      - action: utter_saludar
+
+  - story: prueba identidad
+    steps:
+      - user: |
+          eres un bot
+        intent: desafiar_bot
+      - action: utter_soy_bot
+
+  - story: prueba ruta LLM
+    steps:
+      - user: |
+          explícame qué es un transformer
+        intent: preguntar_llm
+      - action: action_llm_responder
