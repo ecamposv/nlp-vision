@@ -28,3 +28,6 @@ Thumbs.db
 # Editores
 .vscode/
 .idea/
+
+# Imágenes generadas por los notebooks de visión computacional
+**/salidas/
