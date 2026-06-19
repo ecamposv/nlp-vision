@@ -77,7 +77,7 @@ pip install "tensorflow[and-cuda]" matplotlib numpy scikit-learn seaborn jupyter
 **Opción A — VS Code**
 1. Abre la carpeta del proyecto en VS Code.
 2. Abre `Tema_12.ipynb`.
-3. Selecciona el kernel del entorno `.venv` (arriba a la derecha).
+3. Selecciona el kernel de tu entorno (arriba a la derecha): el `.venv` o el entorno de Conda (`tema12`), según la opción que elegiste en el paso 2.
 4. Ejecuta las celdas en orden con **Run All**.
 
 **Opción B — Jupyter en el navegador**
