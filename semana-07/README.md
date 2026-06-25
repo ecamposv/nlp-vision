@@ -65,7 +65,7 @@ Con el entorno **activado**, actualiza `pip` e instala los paquetes:
 
 ```bash
 pip install --upgrade pip
-pip install jupyter ipykernel numpy matplotlib scipy opencv-python mtcnn keras-facenet ultralytics
+pip install jupyter ipykernel numpy matplotlib scipy opencv-python mtcnn keras-facenet ultralytics "imageio[ffmpeg]"
 ```
 
 ¿Para qué sirve cada paquete?
@@ -77,6 +77,7 @@ pip install jupyter ipykernel numpy matplotlib scipy opencv-python mtcnn keras-f
 | `keras-facenet` | Tema 13 | Embeddings biométricos de 512 dimensiones (trae **TensorFlow** como dependencia). |
 | `scipy` | Tema 13 | Distancia coseno para la verificación. |
 | `ultralytics` | Tema 14 | Modelo **YOLO** + trackers (**BoT-SORT**); instala **PyTorch** automáticamente. |
+| `imageio[ffmpeg]` | Tema 14 | Re-codifica el video de salida a **H.264** para verlo dentro del notebook (trae su propio `ffmpeg`). |
 | `numpy`, `matplotlib` | Tema 13 y 14 | Cálculo numérico y visualización. |
 | `jupyter`, `ipykernel` | Ambos | Ejecutar los notebooks. |
 
@@ -92,7 +93,7 @@ pip install jupyter ipykernel numpy matplotlib scipy opencv-python mtcnn keras-f
 Estos archivos **no** se incluyen en el repo; consíguelos antes de ejecutar:
 
 - **Tema 13:** si no subes tus propias imágenes, el notebook **descarga automáticamente** fotos de ejemplo (`foto_pasaporte.png`, `foto_selfie.png`, `otra_persona.png`). Para usar las tuyas, colócalas en `Tema-13/` con esos nombres.
-- **Tema 14:** necesitas el video de prueba **`MOT17 04 FRCNN raw.mp4`** dentro de `Tema-14/`. El modelo `yolo26x.pt` lo descarga `ultralytics` la primera vez.
+- **Tema 14:** si no tienes el video **`MOT17 04 FRCNN raw.mp4`** en `Tema-14/`, el notebook **descarga automáticamente** un video de peatones de ejemplo (`vtest.avi` de OpenCV), así que puedes ejecutarlo sin subir nada. El modelo `yolo26x.pt` lo descarga `ultralytics` la primera vez.
 
 ---
 

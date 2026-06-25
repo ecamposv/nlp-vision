@@ -31,3 +31,8 @@ Thumbs.db
 
 # Imágenes generadas por los notebooks de visión computacional
 **/salidas/
+
+# Archivos generados/descargados por el notebook de tracking (Tema 14)
+**/salida_tracking*.mp4
+**/vtest.avi
+**/custom_tracker.yaml
