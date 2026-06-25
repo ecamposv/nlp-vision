@@ -36,3 +36,8 @@ Thumbs.db
 **/salida_tracking*.mp4
 **/vtest.avi
 **/custom_tracker.yaml
+
+# Imágenes de prueba descargadas por el notebook de reconocimiento facial (Tema 13)
+**/foto_pasaporte.png
+**/foto_selfie.png
+**/otra_persona.png

@@ -65,7 +65,7 @@ Con el entorno **activado**, actualiza `pip` e instala los paquetes:
 
 ```bash
 pip install --upgrade pip
-pip install jupyter ipykernel numpy matplotlib scipy opencv-python mtcnn keras-facenet ultralytics "imageio[ffmpeg]"
+pip install jupyter ipykernel numpy matplotlib scipy opencv-python tensorflow mtcnn keras-facenet ultralytics "imageio[ffmpeg]"
 ```
 
 ¿Para qué sirve cada paquete?
@@ -73,18 +73,20 @@ pip install jupyter ipykernel numpy matplotlib scipy opencv-python mtcnn keras-f
 | Paquete | Notebook | Uso |
 | --- | --- | --- |
 | `opencv-python` | Tema 13 y 14 | Lectura/escritura de imágenes y video, dibujo de cajas. |
-| `mtcnn` | Tema 13 | Detección de rostros (*bounding boxes*). |
-| `keras-facenet` | Tema 13 | Embeddings biométricos de 512 dimensiones (trae **TensorFlow** como dependencia). |
+| `mtcnn` | Tema 13 | Detección de rostros (*bounding boxes*); usa **TensorFlow**. |
+| `tensorflow` | Tema 13 | Motor de *deep learning* que necesitan `mtcnn` y `keras-facenet`. |
+| `keras-facenet` | Tema 13 | Embeddings biométricos de 512 dimensiones (requiere **TensorFlow**). |
 | `scipy` | Tema 13 | Distancia coseno para la verificación. |
 | `ultralytics` | Tema 14 | Modelo **YOLO** + trackers (**BoT-SORT**); instala **PyTorch** automáticamente. |
 | `imageio[ffmpeg]` | Tema 14 | Re-codifica el video de salida a **H.264** para verlo dentro del notebook (trae su propio `ffmpeg`). |
 | `numpy`, `matplotlib` | Tema 13 y 14 | Cálculo numérico y visualización. |
 | `jupyter`, `ipykernel` | Ambos | Ejecutar los notebooks. |
 
-> 💡 **Apple Silicon (M1/M2/M3):** si TensorFlow no aprovecha la GPU, instala además `tensorflow-metal`:
+> ⚠️ **Apple Silicon (M1/M2/M3):** evita instalar `tensorflow-metal`. En versiones recientes de TensorFlow ese plugin suele **romper la importación** con un error tipo `libmetal_plugin.dylib ... _pywrap_tensorflow_internal.so (no such file)`. Si ya lo tienes y ves ese error, quítalo con:
 > ```bash
-> pip install tensorflow-metal
+> pip uninstall tensorflow-metal
 > ```
+> TensorFlow funciona en **CPU** sin problemas (suficiente para reconocer un par de rostros en Tema 13).
 
 ---
 
