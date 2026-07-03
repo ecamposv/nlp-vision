@@ -41,3 +41,7 @@ Thumbs.db
 **/foto_pasaporte.png
 **/foto_selfie.png
 **/otra_persona.png
+
+# SavedModel descargado para TensorFlow Serving (Tema 16)
+# Se regenera con los comandos del README de la semana-08.
+**/tf_serving/
