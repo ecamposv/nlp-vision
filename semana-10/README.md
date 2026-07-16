@@ -112,8 +112,16 @@ jupyter notebook Actividad_8.ipynb
 - **Compatibilidad con Keras 3**: si aparecen errores al cargar `keras_cv.models.StableDiffusion`, fija versiones compatibles y reinicia el kernel:
 
   ```bash
-  pip install "keras-cv==0.9.0" "tensorflow==2.15.*"
+  pip install "keras-cv==0.9.0" "tensorflow==2.20.*"
   ```
+
+- **Conflictos de dependencias en Google Colab**: NO uses `!pip install tensorflow keras-cv --upgrade`. El `--upgrade` sube TensorFlow a una versión que rompe paquetes preinstalados de Colab (`tf-keras`, `tensorflow-text`, `protobuf`, `ydf`). Instala sin actualizar TensorFlow:
+
+  ```bash
+  !pip install -q keras-cv "tensorflow==2.20.*"
+  ```
+
+  Si Colab pide reiniciar el entorno tras instalar, hazlo (**Entorno de ejecución → Reiniciar**) y vuelve a ejecutar.
 
 - **GPU NVIDIA (Linux/Windows)**: instala la build de TensorFlow con soporte CUDA siguiendo https://www.tensorflow.org/install/pip. Con GPU puedes activar precisión mixta descomentando en el notebook:
   `tf.keras.mixed_precision.set_global_policy("mixed_float16")`.
