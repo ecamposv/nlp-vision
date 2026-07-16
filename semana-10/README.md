@@ -123,6 +123,14 @@ jupyter notebook Actividad_8.ipynb
 
   Si Colab pide reiniciar el entorno tras instalar, hazlo (**Entorno de ejecución → Reiniciar**) y vuelve a ejecutar.
 
+- **`NotFoundError: ... undefined symbol` al hacer `import keras_cv` en Colab**: es un desajuste de ABI entre `tensorflow` y `tensorflow-text` (deben ser el **mismo build/versión**). `keras-cv` importa `tensorflow-text`; si actualizas solo TensorFlow, dejas un `tensorflow-text` incompatible. Instala ambos a la misma versión y **reinicia el entorno**:
+
+  ```bash
+  !pip install -q "tensorflow==2.20.*" "tensorflow-text==2.20.*" keras-cv
+  ```
+
+  Después: **Entorno de ejecución → Reiniciar entorno de ejecución** y ejecuta desde la celda de imports (salta la celda de instalación).
+
 - **GPU NVIDIA (Linux/Windows)**: instala la build de TensorFlow con soporte CUDA siguiendo https://www.tensorflow.org/install/pip. Con GPU puedes activar precisión mixta descomentando en el notebook:
   `tf.keras.mixed_precision.set_global_policy("mixed_float16")`.
 - **Apple Silicon (M1/M2/M3)**: `pip install tensorflow` ya funciona en CPU. Para aceleración con la GPU integrada (Metal), añade:
